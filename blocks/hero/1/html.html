@@ -1,0 +1,978 @@
+<!-- ============================================
+     LIGHT MODERN HERO SECTION - WPCode Ready
+     ============================================ -->
+
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --h-coral: #FF6B6B;
+    --h-peach: #FFA07A;
+    --h-violet: #7C5CFC;
+    --h-sky: #38BDF8;
+    --h-mint: #34D399;
+    --h-rose: #F472B6;
+    --h-warm: #FFF7ED;
+    --h-cream: #FFFBF5;
+    --h-white: #FFFFFF;
+    --h-dark: #1E1B4B;
+    --h-text: #334155;
+    --h-muted: #94A3B8;
+    --h-font: 'Plus Jakarta Sans', sans-serif;
+  }
+
+  .starter-hero {
+    position: relative;
+    width: 100%;
+    min-height: 92vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--h-cream);
+    overflow: hidden;
+    font-family: var(--h-font);
+  }
+
+  /* ── Animated Blobs ──────────────────────── */
+  .sh-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.5;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .sh-blob-1 {
+    width: 600px; height: 600px;
+    background: linear-gradient(135deg, #C4B5FD, #A78BFA);
+    top: -15%; right: -10%;
+    animation: shBlobDrift1 18s ease-in-out infinite alternate;
+  }
+
+  .sh-blob-2 {
+    width: 500px; height: 500px;
+    background: linear-gradient(135deg, #FBCFE8, #F9A8D4);
+    bottom: -20%; left: -8%;
+    animation: shBlobDrift2 22s ease-in-out infinite alternate;
+  }
+
+  .sh-blob-3 {
+    width: 400px; height: 400px;
+    background: linear-gradient(135deg, #BAE6FD, #7DD3FC);
+    top: 40%; left: 50%;
+    transform: translate(-50%, -50%);
+    animation: shBlobDrift3 15s ease-in-out infinite alternate;
+  }
+
+  .sh-blob-4 {
+    width: 300px; height: 300px;
+    background: linear-gradient(135deg, #BBF7D0, #6EE7B7);
+    top: 10%; left: 15%;
+    animation: shBlobDrift4 20s ease-in-out infinite alternate;
+    opacity: 0.35;
+  }
+
+  @keyframes shBlobDrift1 {
+    0%   { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(-60px, 40px) scale(1.15); }
+  }
+  @keyframes shBlobDrift2 {
+    0%   { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(50px, -30px) scale(1.1); }
+  }
+  @keyframes shBlobDrift3 {
+    0%   { transform: translate(-50%, -50%) scale(1); }
+    100% { transform: translate(-45%, -55%) scale(1.2); }
+  }
+  @keyframes shBlobDrift4 {
+    0%   { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(30px, 20px) scale(0.9); }
+  }
+
+  /* ── Dot Grid ────────────────────────────── */
+  .sh-dot-grid {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background-image: radial-gradient(circle, rgba(148, 163, 184, 0.2) 1px, transparent 1px);
+    background-size: 32px 32px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 20%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 20%, transparent 100%);
+  }
+
+  /* ── Cursor Gradient Follow ──────────────── */
+  .sh-cursor-glow {
+    position: absolute;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(124, 92, 252, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 1;
+    transform: translate(-50%, -50%);
+    transition: left 0.3s ease-out, top 0.3s ease-out;
+    will-change: left, top;
+  }
+
+  /* ── Canvas Particles ────────────────────── */
+  #shParticles {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  /* ── Content ─────────────────────────────── */
+  .sh-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    max-width: 820px;
+    padding: 60px 24px;
+  }
+
+  /* Badge */
+  .sh-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 20px 8px 10px;
+    background: var(--h-white);
+    border: 1px solid rgba(124, 92, 252, 0.15);
+    border-radius: 50px;
+    margin-bottom: 28px;
+    box-shadow: 0 2px 20px rgba(124, 92, 252, 0.08);
+    cursor: default;
+    transition: all 0.3s ease;
+  }
+
+  .sh-badge:hover {
+    border-color: rgba(124, 92, 252, 0.3);
+    box-shadow: 0 4px 30px rgba(124, 92, 252, 0.12);
+    transform: translateY(-1px);
+  }
+
+  .sh-badge-icon {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--h-violet), var(--h-sky));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+  }
+
+  .sh-badge-text {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--h-text);
+    letter-spacing: 0.2px;
+  }
+
+  .sh-badge-arrow {
+    color: var(--h-violet);
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+  }
+
+  .sh-badge:hover .sh-badge-arrow {
+    transform: translateX(3px);
+  }
+
+  /* Title */
+  .sh-title {
+    font-family: var(--h-font);
+    font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+    font-weight: 800;
+    line-height: 1.12;
+    color: var(--h-dark);
+    margin-bottom: 20px;
+    letter-spacing: -1.5px;
+  }
+
+  .sh-title-line {
+    display: block;
+    overflow: hidden;
+  }
+
+  .sh-title-inner {
+    display: block;
+    transform: translateY(110%);
+  }
+
+  .sh-title .sh-highlight {
+    position: relative;
+    display: inline-block;
+  }
+
+  .sh-title .sh-highlight-text {
+    position: relative;
+    z-index: 2;
+    background: linear-gradient(135deg, var(--h-violet), var(--h-coral), var(--h-sky));
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shGradMove 5s ease-in-out infinite alternate;
+  }
+
+  .sh-title .sh-highlight-underline {
+    position: absolute;
+    bottom: 2px;
+    left: -2%;
+    right: -2%;
+    height: 14px;
+    background: linear-gradient(135deg, rgba(124, 92, 252, 0.15), rgba(56, 189, 248, 0.15));
+    border-radius: 4px;
+    z-index: 1;
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+
+  @keyframes shGradMove {
+    0%   { background-position: 0% center; }
+    100% { background-position: 100% center; }
+  }
+
+  /* Description */
+  .sh-desc {
+    font-size: clamp(1rem, 1.8vw, 1.15rem);
+    line-height: 1.75;
+    color: var(--h-muted);
+    max-width: 580px;
+    margin: 0 auto 36px;
+    font-weight: 400;
+  }
+
+  /* Buttons */
+  .sh-btn-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 48px;
+  }
+
+  .sh-btn-primary {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 34px;
+    background: linear-gradient(135deg, var(--h-violet), #6D5AE6);
+    color: #fff;
+    font-size: 0.95rem;
+    font-weight: 600;
+    font-family: var(--h-font);
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow:
+      0 4px 15px rgba(124, 92, 252, 0.3),
+      0 1px 3px rgba(124, 92, 252, 0.2);
+    overflow: hidden;
+  }
+
+  .sh-btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #6D5AE6, var(--h-sky));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    border-radius: 14px;
+  }
+
+  .sh-btn-primary:hover::before { opacity: 1; }
+
+  .sh-btn-primary:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow:
+      0 8px 30px rgba(124, 92, 252, 0.35),
+      0 2px 8px rgba(124, 92, 252, 0.2);
+  }
+
+  .sh-btn-primary span,
+  .sh-btn-primary svg {
+    position: relative; z-index: 2;
+  }
+
+  .sh-btn-primary svg {
+    transition: transform 0.3s ease;
+  }
+
+  .sh-btn-primary:hover svg {
+    transform: translateX(4px);
+  }
+
+  .sh-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 34px;
+    background: var(--h-white);
+    color: var(--h-dark);
+    font-size: 0.95rem;
+    font-weight: 600;
+    font-family: var(--h-font);
+    border: 1.5px solid rgba(30, 27, 75, 0.1);
+    border-radius: 14px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+  }
+
+  .sh-btn-secondary:hover {
+    border-color: rgba(124, 92, 252, 0.3);
+    box-shadow: 0 4px 20px rgba(124, 92, 252, 0.08);
+    transform: translateY(-2px);
+    color: var(--h-violet);
+  }
+
+  .sh-play-wrap {
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--h-violet), var(--h-sky));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .sh-play-wrap svg {
+    margin-left: 2px;
+  }
+
+  /* Stats Row */
+  .sh-stats {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: 0;
+    flex-wrap: wrap;
+    background: var(--h-white);
+    border-radius: 20px;
+    border: 1px solid rgba(124, 92, 252, 0.08);
+    box-shadow:
+      0 4px 30px rgba(0,0,0,0.04),
+      0 1px 3px rgba(0,0,0,0.02);
+    overflow: hidden;
+  }
+
+  .sh-stat-item {
+    flex: 1;
+    min-width: 140px;
+    padding: 24px 20px;
+    text-align: center;
+    position: relative;
+    transition: background 0.3s ease;
+  }
+
+  .sh-stat-item:hover {
+    background: rgba(124, 92, 252, 0.03);
+  }
+
+  .sh-stat-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 20%;
+    height: 60%;
+    width: 1px;
+    background: rgba(148, 163, 184, 0.15);
+  }
+
+  .sh-stat-icon {
+    width: 40px; height: 40px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px;
+    font-size: 1.1rem;
+  }
+
+  .sh-stat-icon-1 { background: linear-gradient(135deg, #EDE9FE, #DDD6FE); }
+  .sh-stat-icon-2 { background: linear-gradient(135deg, #DBEAFE, #BFDBFE); }
+  .sh-stat-icon-3 { background: linear-gradient(135deg, #FCE7F3, #FBCFE8); }
+  .sh-stat-icon-4 { background: linear-gradient(135deg, #D1FAE5, #A7F3D0); }
+
+  .sh-stat-number {
+    font-family: var(--h-font);
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--h-dark);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .sh-stat-label {
+    font-size: 0.78rem;
+    color: var(--h-muted);
+    font-weight: 500;
+  }
+
+  /* ── Floating Glass Cards ────────────────── */
+  .sh-glass-cards {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    pointer-events: none;
+  }
+
+  .sh-glass {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 16px;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    padding: 16px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+  }
+
+  .sh-glass-1 {
+    top: 18%; left: 4%;
+    width: 180px;
+    animation: shCardFloat 10s ease-in-out infinite;
+  }
+
+  .sh-glass-2 {
+    bottom: 18%; right: 4%;
+    width: 190px;
+    animation: shCardFloat 13s ease-in-out infinite reverse;
+  }
+
+  .sh-glass-3 {
+    top: 55%; left: 6%;
+    width: 160px;
+    animation: shCardFloat 11s ease-in-out infinite;
+    animation-delay: -3s;
+  }
+
+  .sh-glass-4 {
+    top: 14%; right: 6%;
+    width: 170px;
+    animation: shCardFloat 12s ease-in-out infinite reverse;
+    animation-delay: -5s;
+  }
+
+  @keyframes shCardFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50%      { transform: translateY(-18px) rotate(1.5deg); }
+  }
+
+  /* Glass Card Content Styles */
+  .shg-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .shg-avatar {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .shg-avatar-v { background: linear-gradient(135deg, #C4B5FD, #A78BFA); }
+  .shg-avatar-p { background: linear-gradient(135deg, #FBCFE8, #F9A8D4); }
+  .shg-avatar-b { background: linear-gradient(135deg, #BAE6FD, #7DD3FC); }
+  .shg-avatar-g { background: linear-gradient(135deg, #BBF7D0, #6EE7B7); }
+
+  .shg-info { flex: 1; }
+
+  .shg-name {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--h-dark);
+    margin-bottom: 2px;
+  }
+
+  .shg-sub {
+    font-size: 0.65rem;
+    color: var(--h-muted);
+  }
+
+  .shg-check {
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--h-mint), #10B981);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 0.6rem;
+    font-weight: 700;
+  }
+
+  .shg-progress {
+    height: 6px;
+    background: #F1F5F9;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .shg-progress-bar {
+    height: 100%;
+    border-radius: 4px;
+    background: linear-gradient(90deg, var(--h-violet), var(--h-sky));
+    transition: width 1s ease;
+  }
+
+  .shg-mini-chart {
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+    height: 32px;
+    margin-top: 6px;
+  }
+
+  .shg-mini-bar {
+    flex: 1;
+    border-radius: 3px 3px 0 0;
+    min-height: 4px;
+    transition: height 0.5s ease;
+  }
+
+  .shg-mini-bar-v { background: linear-gradient(to top, #DDD6FE, #A78BFA); }
+  .shg-mini-bar-p { background: linear-gradient(to top, #FBCFE8, #F472B6); }
+  .shg-mini-bar-b { background: linear-gradient(to top, #BAE6FD, #38BDF8); }
+
+  .shg-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.65rem;
+    font-weight: 700;
+  }
+
+  .shg-tag-green {
+    background: rgba(52, 211, 153, 0.12);
+    color: #059669;
+  }
+
+  .shg-tag-violet {
+    background: rgba(124, 92, 252, 0.1);
+    color: var(--h-violet);
+  }
+
+  .shg-stars {
+    display: flex;
+    gap: 2px;
+    margin-top: 6px;
+  }
+
+  .shg-star {
+    color: #FBBF24;
+    font-size: 0.7rem;
+  }
+
+  /* ── Responsive ──────────────────────────── */
+  @media (max-width: 1100px) {
+    .sh-glass { display: none; }
+  }
+
+  @media (max-width: 768px) {
+    .starter-hero { min-height: 85vh; }
+
+    .sh-content { padding: 40px 20px; }
+
+    .sh-btn-group { flex-direction: column; }
+
+    .sh-btn-primary,
+    .sh-btn-secondary {
+      width: 100%;
+      max-width: 320px;
+      justify-content: center;
+    }
+
+    .sh-stats {
+      flex-direction: column;
+      border-radius: 16px;
+    }
+
+    .sh-stat-item:not(:last-child)::after {
+      right: 20%;
+      top: auto;
+      bottom: 0;
+      height: 1px;
+      width: 60%;
+    }
+
+    .sh-blob { filter: blur(60px); opacity: 0.35; }
+  }
+
+  @media (max-width: 480px) {
+    .sh-title { letter-spacing: -0.5px; }
+    .sh-stat-item { padding: 18px 16px; }
+  }
+</style>
+
+<!-- ── HTML ─────────────────────────────────── -->
+<section class="starter-hero" id="starterHero">
+
+  <!-- Blobs -->
+  <div class="sh-blob sh-blob-1"></div>
+  <div class="sh-blob sh-blob-2"></div>
+  <div class="sh-blob sh-blob-3"></div>
+  <div class="sh-blob sh-blob-4"></div>
+
+  <!-- Dot Grid -->
+  <div class="sh-dot-grid"></div>
+
+  <!-- Particle Canvas -->
+  <canvas id="shParticles"></canvas>
+
+  <!-- Cursor Glow -->
+  <div class="sh-cursor-glow" id="shCursorGlow"></div>
+
+  <!-- Floating Glass Cards -->
+  <div class="sh-glass-cards">
+
+    <!-- Card 1: User + Check -->
+    <div class="sh-glass sh-glass-1">
+      <div class="shg-row">
+        <div class="shg-avatar shg-avatar-v"></div>
+        <div class="shg-info">
+          <div class="shg-name">Task Complete</div>
+          <div class="shg-sub">Just now</div>
+        </div>
+        <div class="shg-check">✓</div>
+      </div>
+      <div class="shg-progress">
+        <div class="shg-progress-bar" style="width:78%"></div>
+      </div>
+    </div>
+
+    <!-- Card 2: Mini Chart -->
+    <div class="sh-glass sh-glass-2">
+      <div class="shg-row" style="margin-bottom:4px">
+        <div class="shg-info">
+          <div class="shg-name">Revenue</div>
+          <div class="shg-sub">This month</div>
+        </div>
+        <div class="shg-tag shg-tag-green">↑ 24%</div>
+      </div>
+      <div class="shg-mini-chart">
+        <div class="shg-mini-bar shg-mini-bar-v" style="height:40%"></div>
+        <div class="shg-mini-bar shg-mini-bar-b" style="height:65%"></div>
+        <div class="shg-mini-bar shg-mini-bar-v" style="height:50%"></div>
+        <div class="shg-mini-bar shg-mini-bar-p" style="height:80%"></div>
+        <div class="shg-mini-bar shg-mini-bar-b" style="height:60%"></div>
+        <div class="shg-mini-bar shg-mini-bar-v" style="height:90%"></div>
+        <div class="shg-mini-bar shg-mini-bar-b" style="height:100%"></div>
+      </div>
+    </div>
+
+    <!-- Card 3: Rating -->
+    <div class="sh-glass sh-glass-3">
+      <div class="shg-row">
+        <div class="shg-avatar shg-avatar-p"></div>
+        <div class="shg-info">
+          <div class="shg-name">Sarah M.</div>
+          <div class="shg-sub">"Absolutely love it!"</div>
+        </div>
+      </div>
+      <div class="shg-stars">
+        <span class="shg-star">★</span>
+        <span class="shg-star">★</span>
+        <span class="shg-star">★</span>
+        <span class="shg-star">★</span>
+        <span class="shg-star">★</span>
+      </div>
+    </div>
+
+    <!-- Card 4: Status -->
+    <div class="sh-glass sh-glass-4">
+      <div class="shg-row" style="margin-bottom:6px">
+        <div class="shg-avatar shg-avatar-g"></div>
+        <div class="shg-info">
+          <div class="shg-name">System Status</div>
+          <div class="shg-sub">All services</div>
+        </div>
+      </div>
+      <div class="shg-tag shg-tag-green" style="margin-right:4px">● Operational</div>
+      <div class="shg-tag shg-tag-violet">99.9% uptime</div>
+    </div>
+
+  </div>
+
+  <!-- Content -->
+  <div class="sh-content" id="shContent">
+
+    <div class="sh-badge" id="shBadge">
+      <span class="sh-badge-icon">✦</span>
+      <span class="sh-badge-text">Trusted by 10,000+ businesses worldwide</span>
+      <span class="sh-badge-arrow">→</span>
+    </div>
+
+    <h1 class="sh-title" id="shTitle">
+      <span class="sh-title-line">
+        <span class="sh-title-inner">We Help You Build</span>
+      </span>
+      <span class="sh-title-line">
+        <span class="sh-title-inner">
+          <span class="sh-highlight">
+            <span class="sh-highlight-text">Stunning Digital</span>
+            <span class="sh-highlight-underline" id="shUnderline"></span>
+          </span>
+        </span>
+      </span>
+      <span class="sh-title-line">
+        <span class="sh-title-inner">Experiences</span>
+      </span>
+    </h1>
+
+    <p class="sh-desc" id="shDesc">
+      From concept to launch, we craft beautiful, high-performing websites
+      and applications that drive growth, engage users, and deliver real results.
+    </p>
+
+    <div class="sh-btn-group" id="shButtons">
+      <a href="#" class="sh-btn-primary">
+        <span>Get Started Free</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+      <a href="#" class="sh-btn-secondary">
+        <span class="sh-play-wrap">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="#fff">
+            <polygon points="5 3 19 12 5 21 5 3"/>
+          </svg>
+        </span>
+        <span>Watch Demo</span>
+      </a>
+    </div>
+
+    <div class="sh-stats" id="shStats">
+      <div class="sh-stat-item">
+        <div class="sh-stat-icon sh-stat-icon-1">🚀</div>
+        <div class="sh-stat-number" data-target="500" data-suffix="+">0</div>
+        <div class="sh-stat-label">Projects Delivered</div>
+      </div>
+      <div class="sh-stat-item">
+        <div class="sh-stat-icon sh-stat-icon-2">⭐</div>
+        <div class="sh-stat-number" data-target="99" data-suffix="%">0</div>
+        <div class="sh-stat-label">Client Satisfaction</div>
+      </div>
+      <div class="sh-stat-item">
+        <div class="sh-stat-icon sh-stat-icon-3">💜</div>
+        <div class="sh-stat-number" data-target="10" data-suffix="k+">0</div>
+        <div class="sh-stat-label">Happy Customers</div>
+      </div>
+      <div class="sh-stat-item">
+        <div class="sh-stat-icon sh-stat-icon-4">⚡</div>
+        <div class="sh-stat-number" data-target="3" data-suffix="x">0</div>
+        <div class="sh-stat-label">Faster Results</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── JavaScript ──────────────────────────── -->
+<script>
+(function() {
+  'use strict';
+
+  // ── Light Particles ─────────────────────
+  const canvas = document.getElementById('shParticles');
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  let mx = -500, my = -500;
+
+  function resize() {
+    const s = document.getElementById('starterHero');
+    canvas.width = s.offsetWidth;
+    canvas.height = s.offsetHeight;
+  }
+
+  const colors = [
+    'rgba(167,139,250,',   // violet
+    'rgba(56,189,248,',    // sky
+    'rgba(244,114,182,',   // pink
+    'rgba(52,211,153,',    // green
+    'rgba(251,191,36,',    // amber
+  ];
+
+  class P {
+    constructor() { this.init(); }
+    init() {
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
+      this.r = Math.random() * 2.5 + 1;
+      this.dx = (Math.random() - 0.5) * 0.4;
+      this.dy = (Math.random() - 0.5) * 0.4;
+      this.o = Math.random() * 0.4 + 0.15;
+      this.c = colors[Math.floor(Math.random() * colors.length)];
+    }
+    update() {
+      this.x += this.dx;
+      this.y += this.dy;
+
+      const ddx = this.x - mx;
+      const ddy = this.y - my;
+      const dist = Math.sqrt(ddx * ddx + ddy * ddy);
+      if (dist < 100 && dist > 0) {
+        const f = (100 - dist) / 100;
+        this.x += (ddx / dist) * f * 1.5;
+        this.y += (ddy / dist) * f * 1.5;
+      }
+
+      if (this.x < 0 || this.x > canvas.width) this.dx *= -1;
+      if (this.y < 0 || this.y > canvas.height) this.dy *= -1;
+    }
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+      ctx.fillStyle = this.c + this.o + ')';
+      ctx.fill();
+    }
+  }
+
+  function initP() {
+    particles = [];
+    const n = Math.min(60, Math.floor((canvas.width * canvas.height) / 20000));
+    for (let i = 0; i < n; i++) particles.push(new P());
+  }
+
+  function lines() {
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const d = Math.sqrt(dx * dx + dy * dy);
+        if (d < 130) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = 'rgba(148,163,184,' + (0.06 * (1 - d / 130)) + ')';
+          ctx.lineWidth = 0.6;
+          ctx.stroke();
+        }
+      }
+    }
+  }
+
+  function loop() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => { p.update(); p.draw(); });
+    lines();
+    requestAnimationFrame(loop);
+  }
+
+  resize();
+  initP();
+  loop();
+  window.addEventListener('resize', () => { resize(); initP(); });
+
+  // ── Cursor Glow ─────────────────────────
+  const glow = document.getElementById('shCursorGlow');
+  const hero = document.getElementById('starterHero');
+
+  hero.addEventListener('mousemove', e => {
+    const r = hero.getBoundingClientRect();
+    mx = e.clientX - r.left;
+    my = e.clientY - r.top;
+    glow.style.left = mx + 'px';
+    glow.style.top = my + 'px';
+  });
+
+  hero.addEventListener('mouseleave', () => {
+    mx = -500; my = -500;
+  });
+
+  // ── GSAP Entrance ───────────────────────
+  const tl = gsap.timeline({ delay: 0.3 });
+
+  tl.fromTo('#shBadge',
+    { opacity: 0, y: 20, scale: 0.92 },
+    { opacity: 1, y: 0, scale: 1, duration: 0.7, ease: 'back.out(1.7)' }
+  );
+
+  tl.to('.sh-title-inner', {
+    y: '0%',
+    duration: 0.9,
+    stagger: 0.1,
+    ease: 'power4.out'
+  }, '-=0.3');
+
+  tl.to('#shUnderline', {
+    scaleX: 1,
+    duration: 0.6,
+    ease: 'power2.out'
+  }, '-=0.3');
+
+  tl.fromTo('#shDesc',
+    { opacity: 0, y: 25 },
+    { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' },
+    '-=0.3'
+  );
+
+  tl.fromTo('#shButtons',
+    { opacity: 0, y: 25 },
+    { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' },
+    '-=0.35'
+  );
+
+  tl.fromTo('#shStats',
+    { opacity: 0, y: 30 },
+    { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' },
+    '-=0.3'
+  );
+
+  tl.fromTo('.sh-glass',
+    { opacity: 0, scale: 0.8 },
+    { opacity: 1, scale: 1, duration: 0.8, stagger: 0.12, ease: 'back.out(1.4)' },
+    '-=0.6'
+  );
+
+  // ── Counter Animation ───────────────────
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll('.sh-stat-number').forEach(el => {
+          const target = parseInt(el.dataset.target);
+          const suffix = el.dataset.suffix || '';
+          let cur = 0;
+          const step = target / 50;
+          const timer = setInterval(() => {
+            cur += step;
+            if (cur >= target) { cur = target; clearInterval(timer); }
+            el.textContent = Math.floor(cur) + suffix;
+          }, 25);
+        });
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+
+  observer.observe(document.getElementById('shStats'));
+
+  // ── Magnetic Buttons ────────────────────
+  document.querySelectorAll('.sh-btn-primary').forEach(btn => {
+    btn.addEventListener('mousemove', e => {
+      const r = btn.getBoundingClientRect();
+      const x = e.clientX - r.left - r.width / 2;
+      const y = e.clientY - r.top - r.height / 2;
+      btn.style.transform = `translateY(-3px) scale(1.03) translate(${x * 0.12}px, ${y * 0.12}px)`;
+    });
+    btn.addEventListener('mouseleave', () => {
+      btn.style.transform = '';
+    });
+  });
+
+})();
+  </script>
