@@ -1,5 +1,6 @@
 [
   {
+    "uid": 1,
     "id": "modern-saas-hero",
     "title": "Modern SaaS Hero",
     "category": "Hero",
@@ -7,5 +8,65 @@
     "html": "blocks/hero/modern-saas/html.html",
     "react": "blocks/hero/modern-saas/react.tsx",
     "prompt": "blocks/hero/modern-saas/prompt.md"
+  },
+  {
+    "uid": 2,
+    "id": "features-grid",
+    "title": "Features Grid",
+    "category": "Features",
+    "preview": "blocks/features/features-grid/preview.webp",
+    "html": "blocks/features/features-grid/html.html",
+    "react": "blocks/features/features-grid/react.tsx",
+    "prompt": "blocks/features/features-grid/prompt.md"
+  },
+  {
+    "uid": 3,
+    "id": "simple-pricing",
+    "title": "Simple Pricing",
+    "category": "Pricing",
+    "preview": "blocks/pricing/simple-pricing/preview.webp",
+    "html": "blocks/pricing/simple-pricing/html.html",
+    "react": "blocks/pricing/simple-pricing/react.tsx",
+    "prompt": "blocks/pricing/simple-pricing/prompt.md"
+  },
+  {
+    "uid": 4,
+    "id": "faq-accordion",
+    "title": "FAQ Accordion",
+    "category": "FAQ",
+    "preview": "blocks/faq/faq-accordion/preview.webp",
+    "html": "blocks/faq/faq-accordion/html.html",
+    "react": "blocks/faq/faq-accordion/react.tsx",
+    "prompt": "blocks/faq/faq-accordion/prompt.md"
+  },
+  {
+    "uid": 5,
+    "id": "cta-banner",
+    "title": "CTA Banner",
+    "category": "CTA",
+    "preview": "blocks/cta/cta-banner/preview.webp",
+    "html": "blocks/cta/cta-banner/html.html",
+    "react": "blocks/cta/cta-banner/react.tsx",
+    "prompt": "blocks/cta/cta-banner/prompt.md"
+  },
+  {
+    "uid": 6,
+    "id": "simple-footer",
+    "title": "Simple Footer",
+    "category": "Footer",
+    "preview": "blocks/footer/simple-footer/preview.webp",
+    "html": "blocks/footer/simple-footer/html.html",
+    "react": "blocks/footer/simple-footer/react.tsx",
+    "prompt": "blocks/footer/simple-footer/prompt.md"
+  },
+  {
+    "uid": 7,
+    "id": "testimonials-grid",
+    "title": "Testimonials Grid",
+    "category": "Testimonials",
+    "preview": "blocks/testimonials/testimonials-grid/preview.webp",
+    "html": "blocks/testimonials/testimonials-grid/html.html",
+    "react": "blocks/testimonials/testimonials-grid/react.tsx",
+    "prompt": "blocks/testimonials/testimonials-grid/prompt.md"
   }
 ]
