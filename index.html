@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,43 +15,33 @@
 
   <input type="text" placeholder="Search blocks...">
 
-  <div id="categories">
-    <button>Hero</button>
-    <button>Features</button>
-    <button>Pricing</button>
-    <button>FAQ</button>
-    <button>CTA</button>
-    <button>Footer</button>
-  </div>
+  <div id="categories"></div>
 
-  <div id="blocks-grid">
-  </div>
+  <div id="blocks-grid"></div>
 
   <div id="modal" class="hidden">
+    <div class="modal-content">
 
-  <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modal-title"></h2>
+        <button id="close-modal">×</button>
+      </div>
 
-    <button id="close-modal">×</button>
+      <div class="tabs">
+        <button id="tab-html">HTML</button>
+        <button id="tab-react">React</button>
+        <button id="tab-prompt">AI Prompt</button>
+      </div>
 
-    <h2 id="modal-title"></h2>
+      <pre id="code-viewer"></pre>
 
-    <div class="tabs">
-      <button id="tab-html">HTML</button>
-      <button id="tab-react">React</button>
-      <button id="tab-prompt">AI Prompt</button>
+      <div class="modal-footer">
+        <button id="copy-btn">Copy</button>
+      </div>
+
     </div>
-
-    <pre id="code-viewer"></pre>
-
-    <button id="copy-btn">
-      Copy
-    </button>
-
-  </div>
-
   </div>
 
   <script src="script.js"></script>
-
 </body>
 </html>
