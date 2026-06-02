@@ -1,0 +1,11 @@
+[
+  {
+    "id": "modern-saas-hero",
+    "title": "Modern SaaS Hero",
+    "category": "Hero",
+    "preview": "blocks/hero/modern-saas/preview.webp",
+    "html": "blocks/hero/modern-saas/html.html",
+    "react": "blocks/hero/modern-saas/react.tsx",
+    "prompt": "blocks/hero/modern-saas/prompt.md"
+  }
+]
