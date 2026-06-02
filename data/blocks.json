@@ -9,6 +9,16 @@
     "react": "blocks/hero/modern-saas/react.tsx",
     "prompt": "blocks/hero/modern-saas/prompt.md"
   },
+    {
+    "uid": 8,
+    "id": "1",
+    "title": "Modern SaaS Hero",
+    "category": "Hero",
+    "preview": "blocks/hero/1/preview.webp",
+    "html": "blocks/hero/1/html.html",
+    "react": "blocks/hero/1/react.tsx",
+    "prompt": "blocks/hero/1/prompt.md"
+  },
   {
     "uid": 2,
     "id": "features-grid",
