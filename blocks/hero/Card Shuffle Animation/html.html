@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Card Stack Animation</title>
+
+<style>
+body{
+    margin:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    background:#111;
+    font-family:sans-serif;
+}
+
+.grid{
+    width:1170px;
+}
+
+.list{
+    height:652px;
+    position:relative;
+    list-style:none;
+    padding:0;
+    margin:0;
+}
+
+.card{
+    transition:all 1s cubic-bezier(0.68,-0.55,.265,1.55);
+
+    width:222px;
+    height:311px;
+    background:#eee;
+    border-radius:12px;
+
+    position:absolute;
+    right:0;
+    bottom:0;
+    margin:30px 0 15px 15px;
+}
+
+/* Spread Positions */
+.card.ani0{ right:948px; bottom:326px; }
+.card.ani1{ right:711px; bottom:326px; }
+.card.ani2{ right:474px; bottom:326px; }
+.card.ani3{ right:237px; bottom:326px; }
+.card.ani4{ right:0;    bottom:326px; }
+
+.card.ani5{ right:948px; bottom:0; }
+.card.ani6{ right:711px; bottom:0; }
+.card.ani7{ right:474px; bottom:0; }
+.card.ani8{ right:237px; bottom:0; }
+
+.controls{
+    margin-top:20px;
+    display:flex;
+    gap:10px;
+}
+
+button{
+    padding:12px 20px;
+    border:none;
+    cursor:pointer;
+    border-radius:8px;
+    font-size:16px;
+}
+</style>
+</head>
+<body>
+
+<div class="grid">
+
+    <ul class="list">
+        <li class="card"></li>
+        <li class="card"></li>
+        <li class="card"></li>
+        <li class="card"></li>
+        <li class="card"></li>
+        <li class="card"></li>
+        <li class="card"></li>
+        <li class="card"></li>
+        <li class="card"></li>
+    </ul>
+
+    <div class="controls">
+        <button class="stack">Stack</button>
+        <button class="spread">Spread</button>
+    </div>
+
+</div>
+
+<script>
+document.querySelector(".stack").addEventListener("click", () => {
+    document.querySelectorAll(".card").forEach((card, i) => {
+        setTimeout(() => {
+            card.className = "card";
+        }, i * 150);
+    });
+});
+
+document.querySelector(".spread").addEventListener("click", () => {
+    document.querySelectorAll(".card").forEach((card, i) => {
+        setTimeout(() => {
+            card.className = "card ani" + i;
+        }, i * 150);
+    });
+});
+</script>
+
+</body>
+</html>
